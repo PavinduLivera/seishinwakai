@@ -61,7 +61,7 @@ export default function HomeAchievements() {
           {/* Award Image/Visual */}
           <div className="lg:w-1/2 relative group">
             <div className="absolute -inset-4 bg-dojo-green/20 rounded-[3rem] rotate-3 group-hover:rotate-0 transition-transform duration-700"></div>
-            <div className="relative rounded-[2.5rem] overflow-hidden border-8 border-zinc-900 shadow-2xl">
+            <div className="relative rounded-[2.5rem] overflow-hidden border-8 border-dojo-green shadow-2xl">
               <Image 
                 src="/winners.jpg" 
                 alt="Medal Ceremony" 

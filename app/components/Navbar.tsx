@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { FaBars, FaTimes, FaUserPlus, FaFacebook, FaTrophy } from "react-icons/fa";
-//import { GiKarateKick } from "react-icons/gi";
 import Link from "next/link";
+import Image from "next/image"; // Image component එක import කරන්න
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,6 @@ export default function Navbar() {
     { name: "Dojos", href: "/dojos" },
     { name: "About", href: "/about" },
     { name: "Achievements", href: "/achievements" },
-    
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -22,16 +21,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           
-          {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-dojo-black p-2 rounded text-dojo-red text-3xl transition-transform group-hover:scale-110">
-              <FaUserPlus />
-            </div>
-            <div className="leading-tight">
-              <h2 className="font-black text-xl text-dojo-black tracking-tighter uppercase">
-                 <span className="text-dojo-green">Seishinwakai</span> Dojo 
-              </h2>
-              <p className="text-[10px] uppercase font-bold text-dojo-green tracking-[0.1em]">Traditional & Sport</p>
+          {/* Logo Section - නම අයින් කර Logo එක පමණක් දමා ඇත */}
+          <Link href="/" className="flex items-center h-full">
+            <div className="relative w-32 h-16 md:w-50 md:h-20 transition-transform hover:scale-105">
+              <Image 
+                src="/seishinwakai-black.png" 
+                alt="Seishinwakai Logo"
+                fill
+                className="object-contain object-left" // Logo එක වම් පැත්තට align කරලා සම්පූර්ණයෙන් පේන්න හදනවා
+                priority
+              />
             </div>
           </Link>
 
