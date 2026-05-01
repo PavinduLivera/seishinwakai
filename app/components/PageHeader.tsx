@@ -1,4 +1,19 @@
-export default function PageHeader({ title, highlight, subtitle, bgImage, opacity = "opacity-20" }) {
+// 1. Define the Interface (The "contract" for your data)
+interface PageHeaderProps {
+  title: string;
+  highlight: string;
+  subtitle: string;
+  bgImage: string;
+  opacity?: string; // The '?' means this is optional
+}
+
+export default function PageHeader({ 
+  title, 
+  highlight, 
+  subtitle, 
+  bgImage, 
+  opacity = "opacity-20" 
+}: PageHeaderProps) { // 2. Attach the interface here
   return (
     <section className="bg-dojo-black py-24 text-center text-white relative overflow-hidden">
       {/* Background Image with Overlay */}
