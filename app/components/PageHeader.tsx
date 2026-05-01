@@ -1,10 +1,9 @@
-// 1. Define the Interface (The "contract" for your data)
 interface PageHeaderProps {
   title: string;
   highlight: string;
   subtitle: string;
   bgImage: string;
-  opacity?: string; // The '?' means this is optional
+  opacity?: string;
 }
 
 export default function PageHeader({ 
@@ -13,13 +12,13 @@ export default function PageHeader({
   subtitle, 
   bgImage, 
   opacity = "opacity-20" 
-}: PageHeaderProps) { // 2. Attach the interface here
+}: PageHeaderProps) {
   return (
     <section className="bg-dojo-black py-24 text-center text-white relative overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className={`absolute inset-0 ${opacity} bg-cover bg-center transition-transform duration-1000 hover:scale-105`}
-        style={{ backgroundImage: `url('${bgImage}')` }}
+        style={{ backgroundImage: `url("${bgImage}")` }}
       ></div>
       
       {/* Content */}
