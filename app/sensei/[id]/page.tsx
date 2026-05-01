@@ -1,16 +1,23 @@
-// app/sensei/[id]/page.js
-import { FaWhatsapp, FaAward, FaMedal, FaCertificate } from "react-icons/fa";
-
 // app/sensei/[id]/page.tsx
+import { FaWhatsapp, FaAward, FaMedal, FaCertificate } from "react-icons/fa";
+import Image from "next/image"; // Better for Next.js
+
+// 1. Define the Sensei Type so TypeScript knows the structure
+interface Sensei {
+  name: string;
+  rank: string;
+  whatsapp: string;
+  bio: string;
+  image: string;
+  experience?: string;
+  achievements?: string[];
+}
+
 export default async function SenseiProfile({ params }: { params: Promise<{ id: string }> }) {
-  
-// Ithuru code eka...
+  const { id } = await params;
 
-
-const { id } = await params; // URL eke thiyena ID eka gannawa
-
-  // Me thiyenne sample data ekak (Backend eken ganna puluwan passe)
-  const senseiDetails = {
+  // 2. Explicitly type the object as Record<string, Sensei>
+  const senseiDetails: Record<string, Sensei> = {
     "s-c-herath": {
       name: "Shihan S C Herath",
       rank: "5th Dan Black Belt",
@@ -23,24 +30,24 @@ const { id } = await params; // URL eke thiyena ID eka gannawa
     "amal-perera": {
       name: "Sensei Amal Perera",
       rank: "3rd Dan Black Belt",
-      whatsapp: "94766059600", // Amal ගේ අංකය
+      whatsapp: "94766059600",
       bio: "Expert in Shotokan and children's physical fitness...",
       image: "https://images.unsplash.com/photo-1599459183200-59c7687a0275?q=80&w=1974&auto=format&fit=crop"
     },
     "nuwan-silva": {
       name: "Sensei Nuwan Silva",
       rank: "4th Dan Black Belt",
-      whatsapp: "94384567890", // Nuwan ගේ අංකය
+      whatsapp: "94384567890",
       bio: "Specializes in Kata excellence and grading preparation...",
       image: "https://images.unsplash.com/photo-1544260237-37a2ea59dbdf?q=80&w=2070&auto=format&fit=crop"
     }
   };
 
+  // 3. Now this line won't throw an error
   const sensei = senseiDetails[id];
 
   if (!sensei) return <div className="py-20 text-center text-2xl font-bold">Sensei Not Found</div>;
     
-  // WhatsApp link eka auto-generate karana hati
   const message = `Hello ${sensei.name}, I saw your profile on the Karate Dojo website and I'd like to get more information about the classes.`;
   const whatsappUrl = `https://wa.me/${sensei.whatsapp}?text=${encodeURIComponent(message)}`;
 
@@ -51,7 +58,16 @@ const { id } = await params; // URL eke thiyena ID eka gannawa
           
           <div className="relative">
             <div className="absolute inset-0 bg-green-600 rounded-2xl rotate-3"></div>
-            <img src={sensei.image} alt={sensei.name} className="relative z-10 rounded-2xl border-8 border-white shadow-xl" />
+            {/* Using Next.js Image for better performance and build stability */}
+            <div className="relative z-10 w-full h-[400px]">
+              <Image 
+                src={sensei.image} 
+                alt={sensei.name} 
+                fill
+                className="rounded-2xl border-8 border-white shadow-xl object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
 
           <div className="space-y-6">
@@ -62,7 +78,6 @@ const { id } = await params; // URL eke thiyena ID eka gannawa
               "{sensei.bio}"
             </p>
 
-            {/* WhatsApp Contact Button */}
             <div className="pt-6">
               <a 
                 href={whatsappUrl} 
