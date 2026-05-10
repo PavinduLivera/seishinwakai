@@ -1,4 +1,4 @@
-import { FaHistory, FaBullseye, FaHandsHelping, FaAward, FaMedal, FaUserNinja, FaSchool, FaUsers, FaCheckCircle, FaGlobe, FaCertificate, FaShieldAlt, FaCheck } from "react-icons/fa";
+import { FaHistory, FaBullseye, FaHandsHelping, FaAward, FaSchool, FaCheckCircle, FaGlobe, FaCertificate, FaShieldAlt, FaCheck } from "react-icons/fa";
 import PageHeader from "../components/PageHeader";
 import Image from "next/image";
 

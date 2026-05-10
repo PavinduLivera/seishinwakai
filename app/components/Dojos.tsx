@@ -1,78 +1,39 @@
-"use client"
+"use client";
 
-import { FaMapMarkerAlt, FaClock, FaPhoneAlt, FaExternalLinkAlt, FaWalking, FaUserNinja, FaChevronRight, FaUserShield } from "react-icons/fa";
+import { 
+  FaMapMarkerAlt, 
+  FaPhoneAlt, 
+  FaWalking, 
+  FaUserShield, 
+  FaWhatsapp // WhatsApp icon එක එකතු කළා
+} from "react-icons/fa"; 
+import { GiKimono } from "react-icons/gi"; 
+import { BiSolidPhoneCall } from "react-icons/bi";
 import Link from "next/link";
 import PageHeader from "./PageHeader";
-import { section } from "framer-motion/client";
 import Image from "next/image";
+import { dojos } from "@/constants/instructors";
 
 export default function DojosSection() {
-  const dojos = [
-    {
-      id: 1,
-      name: "Hombo Dojo - Piliyandala",
-      senseiName: "Shihan S C Herath",
-      senseiId: "s-c-herath",
-      address: "123 Galle Road, Piliyandala",
-      phone: "+94 76 605 9600",
-      schedule: "Mon, Wed, Fri (4:30 PM - 6:30 PM)",
-      features: ["Kids & Adults", "Tournament Training", "Black Belt Coaching"],
-      image: "https://images.unsplash.com/photo-1552072805-2a9039d00e57?q=80&w=1974&auto=format&fit=crop"
-    },
-    {
-      id: 2,
-      name: "City Branch - Moratuwa",
-      senseiName: "Sensei Amal Perera",
-      senseiId: "amal-perera",
-      address: "45/A Station Road, Moratuwa",
-      phone: "+94 77 987 6543",
-      schedule: "Tue, Thu (5:00 PM - 7:00 PM)",
-      features: ["Kids Specialized", "Self Defense", "Physical Fitness"],
-      image: "https://images.unsplash.com/photo-1599459183200-59c7687a0275?q=80&w=1974&auto=format&fit=crop"
-    },
-    {
-      id: 3,
-      name: "Wadduwa Training Center",
-      senseiName: "Sensei Nuwan Silva",
-      senseiId: "nuwan-silva",
-      address: "Galle Road, Wadduwa",
-      phone: "+94 38 456 7890",
-      schedule: "Sat, Sun (8:00 AM - 10:00 AM)",
-      features: ["Morning Classes", "Kata Excellence", "Grading Focus"],
-      image: "https://images.unsplash.com/photo-1544260237-37a2ea59dbdf?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      id: 4,
-      name: "Wadduwa Training Center",
-      senseiName: "Sensei Nuwan Silva",
-      senseiId: "nuwan-silva",
-      address: "Galle Road, Wadduwa",
-      phone: "+94 38 456 7890",
-      schedule: "Sat, Sun (8:00 AM - 10:00 AM)",
-      features: ["Morning Classes", "Kata Excellence", "Grading Focus"],
-      image: "https://images.unsplash.com/photo-1544260237-37a2ea59dbdf?q=80&w=2070&auto=format&fit=crop"
-    }
-  ];
+
+  const handleMapRedirect = (link) => {
+    window.open(link, "_blank");
+  };
 
   return (
-    
-    <section className="bg-white" id="dojos">
-
-      {/* Section Header */}
+    <section className="bg-white pb-20" id="dojos">
       <PageHeader 
-              title="Find Your" 
-              highlight="Training Ground" 
-              subtitle="Our Locations"
-              bgImage="https://images.unsplash.com/photo-1555597673-b21d5c935865"
-              opacity="opacity-10"
-            />
+        title="Find Your" 
+        highlight="Training Ground" 
+        subtitle="Our Locations"
+        bgImage="https://images.unsplash.com/photo-1555597673-b21d5c935865"
+        opacity="opacity-10"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      
-        {/* Dojo Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {dojos.map((dojo) => (
-            <div key={dojo.id} className="bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-gray-100 hover:shadow-2xl transition-all duration-500 group flex flex-col">
+            <div key={dojo.id} className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_10px_45px_rgba(0,0,0,0.07)] border border-gray-100 hover:shadow-2xl transition-all duration-500 group flex flex-col">
               
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden">
@@ -80,20 +41,20 @@ export default function DojosSection() {
                   src={dojo.image} 
                   alt={dojo.name} 
                   fill
-                  className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute top-5 right-5 bg-dojo-red text-white p-3 rounded-2xl shadow-lg">
-                  <FaUserNinja className="text-xl" />
+                <div className="absolute top-5 right-5 bg-dojo-red text-white p-3 rounded-2xl shadow-lg z-10">
+                  <GiKimono className="text-xl" />
                 </div>
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-dojo-black/60 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-dojo-black/70 to-transparent z-0"></div>
               </div>
 
               {/* Content */}
               <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-2xl font-black text-dojo-black mb-4 uppercase italic tracking-tight">{dojo.name}</h3>
+                <h3 className="text-2xl font-black text-dojo-black mb-4 uppercase italic tracking-tight leading-none">{dojo.name}</h3>
                 
-                {/* Sensei Quick Link Card */}
-                <div className="mt-4 p-3 bg-gray-50 rounded-xl flex items-center justify-between group/sensei hover:bg-green-50 transition-colors">
+                {/* Sensei Card */}
+                <div className="mb-6 p-3 bg-gray-50 rounded-2xl flex items-center justify-between group/sensei hover:bg-green-50 transition-colors border border-gray-100">
                   <div className="flex items-center gap-3">
                     <FaUserShield className="text-green-700 text-xl" />
                     <div>
@@ -101,53 +62,71 @@ export default function DojosSection() {
                       <p className="font-bold text-black group-hover/sensei:text-green-700">{dojo.senseiName}</p>
                     </div>
                   </div>
-
-                  {/* Sensei Profile Link */}
                   <Link href={`/sensei/${dojo.senseiId}`}>
-                    <button className="text-[10px] font-black bg-black text-white px-3 py-1 rounded hover:bg-red-600 transition-all uppercase">
-                      View Profile
+                    <button className="text-[10px] font-black bg-black text-white px-3 py-1.5 rounded-lg hover:bg-red-600 transition-all uppercase">
+                      Profile
                     </button>
                   </Link>
                 </div>
 
-                <div className="space-y-4 mb-8 flex-grow">
+                {/* Training Schedule */}
+                <div className="mb-6 space-y-2">
+                  <p className="text-[10px] font-black text-dojo-green uppercase tracking-[0.2em] mb-3">Training Schedule</p>
+                  {dojo.sessions.map((session, idx) => (
+                    <div key={idx} className="flex items-center justify-between bg-zinc-50 p-3 rounded-xl border border-zinc-100 hover:border-dojo-green/30 transition-colors">
+                      <div className="flex flex-col">
+                        <span className="text-xs font-black text-dojo-black leading-none">{session.day}</span>
+                        <span className="text-[11px] text-gray-500 font-medium mt-1">{session.time}</span>
+                      </div>
+                      <div className="bg-white px-3 py-1 rounded-lg border border-zinc-200 shadow-sm">
+                         <span className="text-[10px] font-black text-dojo-green uppercase">{session.focus}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-4 mb-8 flex-grow border-t border-dashed border-gray-200 pt-6">
                   <div className="flex items-start gap-3 text-gray-500 text-sm">
                     <FaMapMarkerAlt className="text-dojo-red mt-1 shrink-0" />
                     <span className="font-medium leading-tight">{dojo.address}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-gray-500 text-sm">
-                    <FaClock className="text-dojo-green shrink-0" />
-                    <span className="font-medium">{dojo.schedule}</span>
-                  </div>
                   <div className="flex items-center gap-3 text-dojo-black text-sm">
                     <FaPhoneAlt className="text-dojo-green shrink-0" />
-                    <span className="font-black tracking-wide">{dojo.phone}</span>
+                    <span className="font-black tracking-wide">{dojo.displayPhone}</span>
                   </div>
                 </div>
 
-                {/* Features Tags */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {dojo.features.map((feature, index) => (
-                    <span key={index} className="bg-gray-50 text-gray-400 text-[9px] font-black uppercase px-3 py-1.5 rounded-lg border border-gray-100 tracking-wider">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA Buttons */}
-                <div className="flex gap-3">
-                  <button className="flex-1 bg-dojo-black text-white py-4 rounded-xl font-black text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-dojo-red transition-all shadow-lg active:scale-95">
+                {/* CTA Buttons - WhatsApp එකත් එක්ක */}
+                <div className="flex flex-wrap gap-2">
+                  <button 
+                    onClick={() => handleMapRedirect(dojo.mapLink)}
+                    className="flex-1 min-w-[120px] bg-dojo-black text-white py-4 rounded-2xl font-black text-[15px] tracking-widest flex items-center justify-center gap-2 hover:bg-dojo-red transition-all shadow-lg active:scale-95"
+                  >
                     <FaWalking /> VISIT US
                   </button>
-                  <button className="bg-dojo-green/10 text-dojo-green px-5 py-4 rounded-xl hover:bg-dojo-green hover:text-white transition-all shadow-sm">
-                    <FaExternalLinkAlt className="text-xs" />
-                  </button>
+                  
+                  <div className="flex gap-2">
+                    <a 
+                      href={`https://wa.me/${dojo.phone}?text=Hi, I would like to know more about ${dojo.name} classes.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#25D366] text-white px-5 py-4 rounded-2xl hover:bg-[#128C7E] transition-all shadow-sm flex items-center justify-center"
+                    >
+                      <FaWhatsapp className="text-xl" />
+                    </a>
+                    
+                    <a 
+                      href={`tel:${dojo.phone}`}
+                      className="bg-dojo-green/10 text-dojo-green px-5 py-4 rounded-2xl hover:bg-dojo-green hover:text-white transition-all shadow-sm flex items-center justify-center"
+                    >
+                      <BiSolidPhoneCall className="text-xl" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

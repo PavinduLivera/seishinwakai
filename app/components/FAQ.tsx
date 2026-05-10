@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FaPlus, FaMinus, FaQuestionCircle, FaLongArrowAltRight } from "react-icons/fa";
+import { FaPlus, FaMinus, FaQuestionCircle } from "react-icons/fa";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);

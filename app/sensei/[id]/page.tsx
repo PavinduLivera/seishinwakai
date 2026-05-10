@@ -1,103 +1,132 @@
 // app/sensei/[id]/page.tsx
-import { FaWhatsapp, FaAward, FaMedal, FaCertificate } from "react-icons/fa";
-import Image from "next/image"; // Better for Next.js
+import { 
+  FaWhatsapp, FaAward, FaCertificate, 
+  FaCheckCircle, FaStar, FaUserNinja,
+} from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+import { senseiDetails } from "@/constants/instructors";
 
-// 1. Define the Sensei Type so TypeScript knows the structure
-interface Sensei {
-  name: string;
-  rank: string;
-  whatsapp: string;
-  bio: string;
-  image: string;
-  experience?: string;
-  achievements?: string[];
-}
 
 export default async function SenseiProfile({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  // 2. Explicitly type the object as Record<string, Sensei>
-  const senseiDetails: Record<string, Sensei> = {
-    "s-c-herath": {
-      name: "Shihan S C Herath",
-      rank: "5th Dan Black Belt",
-      experience: "25+ Years",
-      achievements: ["National Gold Medalist 2018", "World Karate Federation Certified"],
-      bio: "Shihan Herath has dedicated his life to teaching the traditional art of Shotokan Karate...",
-      whatsapp: "94766059600",
-      image: "/coaches/shihan-herath.jpg"
-    },
-    "amal-perera": {
-      name: "Sensei Amal Perera",
-      rank: "3rd Dan Black Belt",
-      whatsapp: "94766059600",
-      bio: "Expert in Shotokan and children's physical fitness...",
-      image: "https://images.unsplash.com/photo-1599459183200-59c7687a0275?q=80&w=1974&auto=format&fit=crop"
-    },
-    "nuwan-silva": {
-      name: "Sensei Nuwan Silva",
-      rank: "4th Dan Black Belt",
-      whatsapp: "94384567890",
-      bio: "Specializes in Kata excellence and grading preparation...",
-      image: "https://images.unsplash.com/photo-1544260237-37a2ea59dbdf?q=80&w=2070&auto=format&fit=crop"
-    }
-  };
-
-  // 3. Now this line won't throw an error
   const sensei = senseiDetails[id];
+  if (!sensei) return <div className="py-20 text-center font-bold text-red-600">Sensei Not Found</div>;
 
-  if (!sensei) return <div className="py-20 text-center text-2xl font-bold">Sensei Not Found</div>;
-    
-  const message = `Hello ${sensei.name}, I saw your profile on the Karate Dojo website and I'd like to get more information about the classes.`;
-  const whatsappUrl = `https://wa.me/${sensei.whatsapp}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${sensei.whatsapp}?text=${encodeURIComponent("Oss Sensei, I'm interested in joining your classes.")}`;
 
   return (
-    <div className="min-h-screen bg-white py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          
-          <div className="relative">
-            <div className="absolute inset-0 bg-green-600 rounded-2xl rotate-3"></div>
-            {/* Using Next.js Image for better performance and build stability */}
-            <div className="relative z-10 w-full h-[400px]">
+    <div className="min-h-screen bg-gray-50 pb-20">
+      
+      {/* 1. Header/Hero Area */}
+      <div className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
+          <div className="flex flex-col md:flex-row gap-10 items-center">
+            
+            {/* Image */}
+            <div className="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
               <Image 
                 src={sensei.image} 
                 alt={sensei.name} 
                 fill
-                className="rounded-2xl border-8 border-white shadow-xl object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                className="rounded-full object-cover border-4 border-white shadow-lg"
+                priority
               />
+              <div className="absolute bottom-2 right-2 bg-red-600 text-white p-3 rounded-full shadow-md">
+                <FaUserNinja />
+              </div>
+            </div>
+
+            {/* Basic Info */}
+            <div className="text-center md:text-left space-y-4">
+              <div className="inline-block bg-red-50 text-red-600 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">
+                {sensei.rank}
+              </div>
+              <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900">{sensei.name}</h1>
+              <p className="text-lg text-gray-600 font-medium">{sensei.role} • {sensei.experience} Experience</p>
+              
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+                <a 
+                  href={whatsappUrl}
+                  target="_blank"
+                  className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all"
+                >
+                  <FaWhatsapp /> Contact on WhatsApp
+                </a>
+                
+              </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div className="space-y-6">
-            <h1 className="text-4xl font-black text-black uppercase">{sensei.name}</h1>
-            <p className="bg-red-600 text-white inline-block px-4 py-1 rounded-full font-bold">{sensei.rank}</p>
-            
-            <p className="text-gray-600 leading-relaxed italic border-l-4 border-green-600 pl-4">
-              "{sensei.bio}"
-            </p>
+      {/* 2. Main Content */}
+      <main className="max-w-6xl mx-auto px-6 mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          {/* Left Column: About & Bio */}
+          <div className="lg:col-span-2 space-y-8">
+            <section className="bg-white p-8 rounded-2xl shadow-sm">
+              <h2 className="text-xl font-bold text-gray-900 mb-4 border-b pb-2">About the Instructor</h2>
+              <p className="text-gray-600 leading-relaxed text-lg">
+                {sensei.bio}
+              </p>
+            </section>
 
-            <div className="pt-6">
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-black text-white px-8 py-4 rounded-xl font-black transition-all shadow-lg transform hover:-translate-y-1"
-              >
-                <FaWhatsapp className="text-2xl" /> CONTACT VIA WHATSAPP
-              </a>
-            </div>
+            <section className="bg-white p-8 rounded-2xl shadow-sm">
+              <h2 className="text-xl font-bold text-gray-900 mb-6 border-b pb-2">Professional Qualifications</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <ul className="space-y-4">
+                  {sensei.qualifications.map((q, i) => (
+                    <li key={i} className="flex gap-3 text-sm text-gray-600 font-medium">
+                      <FaCheckCircle className="text-green-500 mt-1 shrink-0" /> {q}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-6 text-xs font-bold text-gray-500 uppercase tracking-widest">
-               <div className="flex items-center gap-2"><FaAward className="text-green-700" /> Professional Coach</div>
-               <div className="flex items-center gap-2"><FaMedal className="text-green-700" /> Verified Instructor</div>
-               <div className="flex items-center gap-2"><FaCertificate className="text-green-700" /> Licensed Coach</div>
-            </div>
+          {/* Right Column: Sidebar info */}
+          <div className="space-y-8">
+            {/* Specializations */}
+            <section className="bg-black text-white p-8 rounded-2xl shadow-lg">
+              <h2 className="text-lg font-bold mb-6 flex items-center gap-2">
+                <FaStar className="text-yellow-400" /> Mastery Areas
+              </h2>
+              <div className="flex flex-wrap gap-2">
+                {sensei.specializations.map((s, i) => (
+                  <span key={i} className="bg-zinc-800 text-zinc-300 px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider border border-zinc-700">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* Certifications */}
+            <section className="bg-white p-8 rounded-2xl shadow-sm">
+              <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <FaAward className="text-red-600" /> Accreditations
+              </h2>
+              <ul className="space-y-4">
+                {sensei.additionalCerts.map((a, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-gray-600">
+                    <FaCertificate className="text-blue-500 mt-1 shrink-0" /> {a}
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
 
         </div>
+      </main>
+
+      {/* Footer Note */}
+      <div className="max-w-6xl mx-auto px-6 mt-16 text-center text-gray-400 text-sm">
+        <p>© {new Date().getFullYear()} Japan Karate Do Shotokan Ryu Seishinwakai, Sri Lanka.</p>
       </div>
+
     </div>
   );
 }
