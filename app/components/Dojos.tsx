@@ -16,9 +16,9 @@ import { dojos } from "@/constants/instructors";
 
 export default function DojosSection() {
 
-  const handleMapRedirect = (link) => {
-    window.open(link, "_blank");
-  };
+const handleMapRedirect = (link: string) => {
+  window.open(link, "_blank");
+};
 
   return (
     <section className="bg-white pb-20" id="dojos">
