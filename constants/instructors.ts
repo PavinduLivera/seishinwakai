@@ -157,7 +157,7 @@ export const senseiDetails: Record<string, Sensei> = {
     rank: "2nd Dan Black Belt",
     role: "Junior Instructor",
     experience: "7+ Years",
-    whatsapp: "94779812060", // නිවැරදි අංකය ඇතුළත් කරන්න
+    whatsapp: "94743544108", // නිවැරදි අංකය ඇතුළත් කරන්න
     image: "https://cdn-icons-png.flaticon.com/512/1077/1077114.png",
     bio: "Over 7 years of experience in Shotokan Karate. Instructor at Seishinwakai Dojo Piliyandala.",
     qualifications: [
