@@ -1,7 +1,6 @@
 import { 
   FaWhatsapp, FaAward, FaCertificate, 
-  FaCheckCircle, FaStar, FaUserNinja, FaBookOpen,
-  FaTrophy // ජයග්‍රහණ සඳහා Trophy Icon එක එකතු කළා
+  FaCheckCircle, FaStar, FaUserNinja, FaBookOpen
 } from "react-icons/fa";
 import Image from "next/image";
 import { senseiDetails } from "@/constants/instructors";
@@ -64,7 +63,7 @@ export default async function SenseiProfile({ params }: { params: Promise<{ id: 
       <main className="max-w-6xl mx-auto px-4 md:px-6 mt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Left Column: About, Achievements & Qualifications (Takes 8 Columns on Desktop) */}
+          {/* Left Column: About & Full Story & Bio (Takes 8 Columns on Desktop) */}
           <div className="lg:col-span-8 space-y-8">
             
             {/* Full Biography / Martial Arts Journey */}
@@ -73,6 +72,7 @@ export default async function SenseiProfile({ params }: { params: Promise<{ id: 
                 <FaBookOpen className="text-red-600 text-base" /> About the Instructor
               </h2>
               
+              {/* මෙතැනදී fullStory එක Array එකක් විදියට තියෙනවා නම් ඡේද වෙන් වෙන්ව පෙන්වනවා, නැත්නම් bio එක fallback එකක් විදියට ගන්නවා */}
               <div className="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed font-medium">
                 {sensei.fullStory && sensei.fullStory.length > 0 ? (
                   sensei.fullStory.map((paragraph, index) => (
@@ -83,25 +83,6 @@ export default async function SenseiProfile({ params }: { params: Promise<{ id: 
                 )}
               </div>
             </section>
-
-            {/* NEW SECTION: Achievements / Track Record (Conditional Rendering) */}
-            {sensei.achievements && sensei.achievements.length > 0 && (
-              <section className="bg-gradient-to-br from-amber-50/60 to-orange-50/20 p-6 md:p-8 rounded-2xl shadow-sm border border-amber-100/70">
-                <h2 className="text-xl font-bold text-amber-950 mb-4 border-b border-amber-200/60 pb-3 flex items-center gap-2">
-                  <FaTrophy className="text-amber-500 text-base" /> Key Career Achievements
-                </h2>
-                <div className="space-y-3">
-                  {sensei.achievements.map((achievement, i) => (
-                    <div key={i} className="flex gap-3 text-sm md:text-base text-amber-900 font-semibold bg-white/80 p-4 rounded-xl border border-amber-100 shadow-xs">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-[10px] font-bold text-white">
-                        {i + 1}
-                      </span>
-                      <span>{achievement}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
 
             {/* Qualifications */}
             <section className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100">

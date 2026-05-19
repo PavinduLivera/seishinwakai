@@ -25,8 +25,10 @@ export interface Sensei {
   role: string;
   whatsapp: string;
   bio: string;
+  fullStory?: string[];
   image: string;
   experience: string;
+  achievements: string[];
   qualifications: string[];
   additionalCerts: string[];
   specializations: string[];
@@ -36,100 +38,141 @@ export interface Sensei {
 export const senseiDetails: Record<string, Sensei> = {
     "s-c-herath": {
     name: "Shihan S C Herath",
-    rank: "6th Dan Black Belt",
-    role: "Chief Instructor",
-    experience: "35+ Years",
-    whatsapp: "94766059600",
+    rank: "5th Dan Black Belt",
+    role: "Founder & Chief Instructor",
+    experience: "25+ Years",
+    whatsapp: "94779188042",
     image: "/coaches/shihan-herath.jpg",
-    bio: "Mastering the mind is as important as mastering the body. My mission is to forge resilient spirits through the authentic path of Shotokan Karate.",
+    bio: "Welcome to Seishinwakai. Our foundation is built upon decades of discipline, competitive excellence, and a profound dedication to the art of Shotokan Karate.",
+    fullStory: [
+      "The journey began in 1999 with the prestigious Japan Karate Association (JKA). Displaying early promise and dedication, our founder achieved his Black Belt 1st Dan in 2005, followed by his 2nd Dan in 2007. Between 1999 and 2012, he served as a dedicated player, instructor, and branch member under the JKA banner, laying a rock-solid foundation in traditional Shotokan techniques.",
+      "His competitive career is marked by extraordinary success on both national and international stages. Selected for the Junior National Karate Team in 2004, he dominated the arena as the Junior National Champion consecutively from 2005 to 2008. In 2007, he brought glory to Sri Lanka by winning the Silver Medal in the Kumite event at the Junior South Asian Open Karate Championship in India. The following year, he represented the nation at the 2008 Asian Karate Championship.",
+      "Parallel to his civilian achievements, he served in the Sri Lanka Air Force from 2008 to 2019, where he proudly captained the Air Force Karate Team. During his final two years of service, his vast technical expertise was called upon to design a highly specialized 'Hand-to-Hand Combat' course for the Elite Special Airborne Force.",
+      "As an educator, his impact on the next generation of martial artists is immeasurable. He has served as a respected coach for numerous prestigious institutions, including the General Sir John Kotelawala Defence University (KDU), the CSC Army Unit, Visakha Vidyalaya, Devi Balika Vidyalaya, and St. John's College.",
+      "Driven by a vision to cultivate the true spirit of Shotokan Karate, he founded the Japan Karate Do Shotokan Ryu Seishinwakai Association in 2025. Today, as the Founder and Chief Instructor, he continues to share his lifelong expertise, shaping the minds and bodies of the next generation of karatekas."
+    ],
     qualifications: [
-      "Former National Team Coach",
-      "WKF Certified International Referee",
-      "SLKF Executive Committee Member",
-      "Chief Instructor of Seishinwakai Sri Lanka"
+      "Junior National Champion (2005 - 2008)",
+      "Junior South Asian Open Silver Medalist (2007)",
+      "Former Air Force Karate Team Captain",
+      "Hand-to-Hand Combat Course Designer for Special Airborne Force"
     ],
     additionalCerts: [
-      "Advanced Sports Science Diploma",
-      "First Aid & Injury Management Certified",
-      "Physical Fitness Specialist"
+      "WKF Certified Coach",
+      "Specialized Military Combat Instructor"
     ],
-    specializations: ["Elite Kumite Tactics", "Advanced Kata Mastery", "Mental Conditioning"]
+    specializations: ["Elite Kumite Tactics", "Advanced Kata Mastery", "Mental Conditioning", "Traditional Shotokan", "Hand-to-Hand Combat", "Elite Tournament Prep"],
+    achievements: [    ]
   },
+
+  "thilini-kulathunga": {
+    name: "Sensei P. Thilini Priyangani Kulathunga",
+    rank: "4th Dan Black Belt",
+    role: "Assistant Chief Instructor",
+    experience: "25+ Years", 
+    whatsapp: "94771514526", 
+    image: "/coaches/sensei-thilini.jpg", 
+    bio: "Serving as the Assistant Chief Instructor, bringing with her years of dedication, competitive experience, and professional expertise in both Karate and fitness training.",
+    fullStory: [
+      "P. Thilini Priyangani Kulathunga serves as the Assistant Chief Instructor of the Japan Karate Do Shotokan Ryu Seishinwakai Association, bringing with her years of dedication, competitive experience, and professional expertise in both Karate and fitness training.",
+      "Her journey in Karate began in the year 2000 under the Japan Karate Association (JKA), where she developed a strong foundation in traditional Shotokan Karate through discipline, commitment, and continuous training. From an early stage, she actively participated in national-level Karate championships and established herself as a talented and accomplished athlete.",
+      "Through years of dedication and technical excellence, she achieved the prestigious rank of 4th Dan (Yondan) under the Japan Karate Toryukai Association, reflecting her advanced knowledge, leadership, and contribution to the martial art.",
+      "As an experienced instructor, she has trained students from numerous international schools across Sri Lanka, playing a significant role in developing skilled Karate athletes and nurturing discipline, confidence, and sportsmanship among young practitioners. Many of her students have successfully competed in various tournaments and demonstrated outstanding performances in the field of Karate.",
+      "In addition to her martial arts achievements, she is also a registered and qualified Fitness Trainer certified by the Lanka Institute of Fitness. Her expertise in physical fitness and athlete conditioning further strengthens her ability to guide students toward both physical excellence and personal development."
+    ],
+    qualifications: [
+      "4th Dan (Yondan) - Japan Karate Toryukai",
+      "Experienced International Schools Coach",
+      "Accomplished National Level Athlete"
+    ],
+    additionalCerts: [
+      "Certified Fitness Trainer (Lanka Institute of Fitness)",
+      "Athlete Conditioning Specialist"
+    ],
+    specializations: ["Traditional Shotokan", "Kids & Youth Development", "Physical Fitness & Conditioning"],
+    achievements: [    ]
+  },
+
+
   "pavindu-livera": {
     name: "Sensei Pavindu Livera",
-    rank: "Black Belt",
-    role: "Senior Instructor",
+    rank: "2nd Dan Black Belt",
+    role: "Junior Instructor",
     experience: "10+ Years",
     whatsapp: "94766059600",
-    image: "/sensei-pavindu.jpg",
+    image: "/coaches/sensei-pavindu.jpg",
     bio: "Expert in modern tournament Kumite tactics and focused on elite athlete development programs.",
     qualifications: [
-      "National Kumite Gold Medalist",
-      "District Karate Champion",
-      "Qualified Sports Instructor"
+      "SLKF Certified Coach",
+      "School Karate Association Certified Coach",
+      "SLKF Kumite Judge (B)"
     ],
     additionalCerts: [
       "Youth Leadership Training",
       "Functional Strength Coach",
-      "Sports Nutrition Basic Certification"
     ],
-    specializations: ["Tournament Preparation", "Kids Karate Foundation", "Speed & Agility"]
+    specializations: ["Tournament Preparation", "Kids Karate Foundation", "Speed & Agility"],
+    achievements: [
+      "All Island Senior School Championship 2019 Under 21 Kumite -55Kg: Gold Medalist"
+    ]
   },
-  "rohan-de-silva": {
-    name: "Sensei Rohan de Silva",
-    rank: "5th Dan Black Belt",
-    role: "Chief Instructor",
-    experience: "25+ Years",
-    whatsapp: "94766059600", // නිවැරදි අංකය ඇතුළත් කරන්න
-    image: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?q=80&w=1974&auto=format&fit=crop",
-    bio: "Over 25 years of experience in Shotokan Karate. National team coach and WKF certified referee.",
-    qualifications: [
-      "National Team Coach",
-      "WKF Certified Referee",
-      "Senior Technical Advisor"
-    ],
-    additionalCerts: [
-      "WKF Certified Coach",
-      "Advanced Sports Coaching Diploma"
-    ],
-    specializations: ["Kumite Tactics", "Professional Coaching", "Refereeing"]
-  },
-  "amal-perera": {
-    name: "Sensei Amal Perera",
-    rank: "3rd Dan Black Belt",
-    role: "Senior Instructor",
-    experience: "10+ Years",
-    whatsapp: "94766059600",
-    image: "https://images.unsplash.com/photo-1599459183200-59c7687a0275?q=80&w=1974&auto=format&fit=crop",
-    bio: "Specializes in Kumite tactics and youth development programs with 10+ years of coaching.",
-    qualifications: [
-      "South Asian Bronze Medalist",
-      "Former National Athlete"
-    ],
-    additionalCerts: [
-      "Fitness Specialist Certification",
-      "Youth Development Program Lead"
-    ],
-    specializations: ["Kumite Tactics", "Youth Development", "Physical Fitness"]
-  },
-  "nuwan-perera": {
-    name: "Sensei Nuwan Perera",
+
+  "tharidu-eranda": {
+    name: "Sensei Tharidu Eranda",
     rank: "2nd Dan Black Belt",
     role: "Junior Instructor",
-    experience: "5+ Years",
-    whatsapp: "94766059600",
-    image: "https://images.unsplash.com/photo-1509564324749-47088719ecda?q=80&w=2070&auto=format&fit=crop",
-    bio: "Expert in Kids karate and foundation movements. Dedicated to building the next generation.",
+    experience: "10+ Years",
+    whatsapp: "947XXXXXXXX", // නිවැරදි අංකය ඇතුළත් කරන්න
+    image: "https://cdn-icons-png.flaticon.com/512/1077/1077114.png", // නිවැරදි Image URL එක ඇතුළත් කරන්න
+    bio: "Over 10 years of experience in Shotokan Karate. SLKF coach",
     qualifications: [
-      "District Champion",
-      "Qualified Foundation Instructor"
+      "SLKF Certified Coach"
     ],
-    additionalCerts: [
-      "First Aid Certified",
-      "Kids Behavioral Training"
-    ],
-    specializations: ["Kids Karate", "Basic Foundation", "Kata Specialist"]
+    additionalCerts: [],
+    specializations: ["Kumite", "Kata", "Junior Training"] ,
+    achievements: [    ]
   },
+
+  "olan-bermil": {
+    name: "Sensei S Olan Bermil Fernando",
+    rank: "2nd Dan Black Belt",
+    role: "Junior Instructor",
+    experience: "10+ Years",
+    whatsapp: "94789901480", // නිවැරදි අංකය ඇතුළත් කරන්න
+    image: "https://cdn-icons-png.flaticon.com/512/1077/1077114.png", 
+    bio: "Over 10 years of experience in Shotokan Karate.",
+    qualifications: [
+      "Instructor at Seishinwakai Dojo Piliyandala"
+    ],
+    additionalCerts: [],
+    specializations: ["Kumite Tactics", "Kata", "Junior Training"], // අවශ්‍ය පරිදි වෙනස් කරගන්න
+    achievements: [
+      "49th National Sports Festival -60Kg Kumite Gold Medalist",
+      "All Island School Games 2025 Under 21 Kumite -67Kg: Gold Medalist"
+    ]
+  },
+
+  "sandula-sewmin": {
+    name: "Sensei Sandula Sewmin Fonseka",
+    rank: "2nd Dan Black Belt",
+    role: "Junior Instructor",
+    experience: "7+ Years",
+    whatsapp: "94779812060", // නිවැරදි අංකය ඇතුළත් කරන්න
+    image: "https://cdn-icons-png.flaticon.com/512/1077/1077114.png",
+    bio: "Over 7 years of experience in Shotokan Karate. Instructor at Seishinwakai Dojo Piliyandala.",
+    qualifications: [
+      "Instructor at Seishinwakai Dojo Piliyandala"
+    ],
+    additionalCerts: [],
+    specializations: ["Kumite Tactics", "Kata Training", "Junior Training"], // අවශ්‍ය පරිදි වෙනස් කරගන්න
+    achievements: [
+      "South Asian Karate Championship 2023 (Kumite) - Bronze Medalist",
+      "Sri Lanka School's Senior Karate Championship 2022 (Kumite) - Gold Medalist",
+      "School Games (Western Province) (Kumite) - Gold Medalist",
+      "Sri Lanka Schools Karate (Kata) Championship 2021 - Gold Medalist"
+    ]
+  },
+
 };
 
 // --- 3. Dojo Details ---
@@ -142,11 +185,15 @@ export const dojos: Dojo[] = [
     address: "123 Galle Road, Piliyandala",
     phone: "+94766059600",
     displayPhone: "+94 76 605 9600",
-    mapLink: "https://maps.google.com/...",
+    mapLink: "https://maps.app.goo.gl/WWatjJQidTrdjrLx8?g_st=ic",
     sessions: [
-      { day: "Monday", time: "4:00 PM - 6:00 PM", focus: "Kumite" },
-      { day: "Wednesday", time: "4:30 PM - 6:30 PM", focus: "Kata" },
-      { day: "Friday", time: "4:00 PM - 6:00 PM", focus: "Physical" }
+      { day: "Monday", time: "4:00 PM - 6:30 PM", focus: "Kata" },
+      { day: "Tuesday", time: "4:00 PM - 6:30 PM", focus: "Kids Kata" },
+      { day: "Wednesday", time: "4:00 PM - 6:30 PM", focus: "Kumite" },
+      { day: "Thursday", time: "4:00 PM - 6:30 PM", focus: "Kids Kumite" },
+      { day: "Friday", time: "4:00 PM - 6:30 PM", focus: "Kata" },
+      { day: "Saturday", time: "2:00 PM - 4:00 PM", focus: "Kids Kumite" },
+      { day: "Saturday", time: "4:00 PM - 6:30 PM", focus: "Kumite" },
     ],
     features: ["Kids & Adults", "Tournament Training", "Black Belt Coaching"],
     image: "/Hero-Image.jpg"
@@ -159,10 +206,26 @@ export const dojos: Dojo[] = [
     address: "New Galle Road, Moratuwa",
     phone: "+94766059600",
     displayPhone: "+94 76 605 9600",
-    mapLink: "https://maps.google.com/...",
+    mapLink: "https://maps.app.goo.gl/14mRgbp2YYwnqi6F6?g_st=ic",
     sessions: [
       { day: "Thursday", time: "4:00 PM - 6:00 PM", focus: "Kata" },
       { day: "Saturday", time: "7:30 AM - 9:00 AM", focus: "Kumite" }
+    ],
+    features: ["Kids Specialized", "Physical Fitness"],
+    image: "/Hero-Image.jpg"
+  },
+  {
+    id: 3,
+    name: "Dehiwala Dojo",
+    senseiName: "Sensei Tharidu Eranda",
+    senseiId: "tharidu-eranda",
+    address: "Kawdana Road, Dehiwala",
+    phone: "+94701074489",
+    displayPhone: "+94 70 107 4489",
+    mapLink: "https://maps.app.goo.gl/wYkRcEfEGpPzzVss8",
+    sessions: [
+      { day: "Tuesday", time: "4:00 PM - 6:00 PM", focus: "Kata" },
+      { day: "Saturday", time: "1:30 PM - 3:00 PM", focus: "Kumite" }
     ],
     features: ["Kids Specialized", "Self Defense", "Physical Fitness"],
     image: "/Hero-Image.jpg"

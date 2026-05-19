@@ -1,27 +1,22 @@
 import { FaUserNinja, FaWhatsapp, FaChevronRight, FaAward } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "../components/PageHeader";
+import PageHeader from "../PageHeader";
 import { senseiDetails } from "@/constants/instructors";
 
 export default function AllInstructors() {
   const currentYear = new Date().getFullYear();
 
-  // 1. Data Object එක Array එකක් බවට පත් කරගැනීම
+  // 1. Array එකක් බවට පත් කරගෙන Founder සහ අනෙක් අය වෙන් කරගන්නවා
   const allSenseis = Object.entries(senseiDetails).map(([id, data]) => ({
     id,
     ...data,
   }));
 
-  // 🔍 2. Roles අනුව නිවැරදිව වෙන් කරගැනීමේ Logic එක
-  const chiefInstructor = allSenseis.find(s => s.role.toLowerCase().includes("founder"));
-  const assistantChief = allSenseis.find(s => s.role.toLowerCase().includes("assistant chief"));
-  
-  // Chief සහ Assistant Chief හැර අනෙක් සියලුම දෙනා Grid එකට පෙරීම
-  const otherInstructors = allSenseis.filter(
-    s => !s.role.toLowerCase().includes("founder") && 
-         !s.role.toLowerCase().includes("assistant chief")
-  );
+  // Role එක "Founder & Chief Instructor" හෝ "Chief Instructor" තියෙන කෙනාව මුලින්ම ගන්නවා
+  const founder = allSenseis.find(s => s.role.toLowerCase().includes("founder"));
+  // අනෙක් සියලුම Instructors ලව වෙනම ගන්නවා
+  const otherInstructors = allSenseis.filter(s => !s.role.toLowerCase().includes("founder"));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -35,16 +30,16 @@ export default function AllInstructors() {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 md:py-20 space-y-16">        
         
-        {/* ================= CARD 1: FOUNDER & CHIEF INSTRUCTOR ================= */}
-        {chiefInstructor && (
+        {/* ================= FOUNDER SECTION (FEATURED) ================= */}
+        {founder && (
           <div className="bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-md border border-gray-100 group">
             <div className="flex flex-col lg:flex-row min-h-[450px]">
               
-              {/* Image Side */}
+              {/* Founder Image */}
               <div className="lg:w-5/12 h-80 lg:h-auto relative overflow-hidden bg-zinc-900">
                 <Image 
-                  src={chiefInstructor.image} 
-                  alt={chiefInstructor.name} 
+                  src={founder.image} 
+                  alt={founder.name} 
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover group-hover:scale-105 transition-all duration-700"
@@ -55,33 +50,35 @@ export default function AllInstructors() {
                 <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/90 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <p className="text-[10px] font-black uppercase tracking-widest text-dojo-green mb-1">Legacy</p>
-                  <p className="text-2xl font-black italic">{chiefInstructor.experience}</p>
+                  <p className="text-2xl font-black italic">{founder.experience}</p>
                 </div>
               </div>
 
-              {/* Content Side */}
+              {/* Founder Content */}
               <div className="lg:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col justify-center space-y-4 md:space-y-6 bg-gradient-to-br from-white to-gray-50/50">
                 <div>
                   <div className="bg-red-600 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest w-fit mb-4 shadow-sm animate-pulse">
-                    {chiefInstructor.role}
+                    {founder.role}
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-black text-black uppercase italic tracking-tight">{chiefInstructor.name}</h2>
-                  <p className="text-gray-400 font-bold text-[11px] uppercase tracking-widest mt-1">{chiefInstructor.rank}</p>
+                  <h2 className="text-3xl md:text-4xl font-black text-black uppercase italic tracking-tight">{founder.name}</h2>
+                  <p className="text-gray-400 font-bold text-[11px] uppercase tracking-widest mt-1">{founder.rank}</p>
                 </div>
 
+                {/* Bio (කෙටි විස්තරය මෙතනට ලස්සනට ගැලපෙනවා) */}
                 <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium max-w-xl">
-                  {chiefInstructor.bio}
+                  {founder.bio}
                 </p>
 
+                {/* Actions */}
                 <div className="flex gap-2 md:gap-3 pt-6 border-t border-gray-100 max-w-md">
                   <Link 
-                    href={`/sensei/${chiefInstructor.id}`} 
+                    href={`/sensei/${founder.id}`} 
                     className="flex-1 bg-black text-white py-4 rounded-xl md:rounded-2xl font-black text-[10px] tracking-widest flex items-center justify-center gap-2 hover:bg-dojo-green transition-all shadow-md active:scale-95"
                   >
                     READ FULL STORY <FaChevronRight className="text-[8px]" />
                   </Link>
                   <a 
-                    href={`https://wa.me/${chiefInstructor.whatsapp}`}
+                    href={`https://wa.me/${founder.whatsapp}`}
                     target="_blank"
                     className="bg-green-500 text-white px-5 py-4 rounded-xl md:rounded-2xl hover:bg-green-600 transition-all shadow-md flex items-center justify-center active:scale-95"
                   >
@@ -94,72 +91,13 @@ export default function AllInstructors() {
           </div>
         )}
 
-        {/* ================= CARD 2: ASSISTANT CHIEF INSTRUCTOR ================= */}
-        {assistantChief && (
-          <div className="bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-md border border-gray-100 group">
-            {/* Image එක දකුණු පැත්තට දාන්න lg:flex-row-reverse පාවිච්චි කරලා තියෙනවා */}
-            <div className="flex flex-col lg:flex-row-reverse min-h-[450px]">
-              
-              {/* Image Side */}
-              <div className="lg:w-5/12 h-80 lg:h-auto relative overflow-hidden bg-zinc-900">
-                <Image 
-                  src={assistantChief.image} 
-                  alt={assistantChief.name} 
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute top-5 left-5 bg-black/80 text-white p-3 rounded-2xl backdrop-blur-md">
-                  <FaUserNinja className="text-xl" />
-                </div>
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/90 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 text-white">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-dojo-green mb-1">Dedication</p>
-                  <p className="text-2xl font-black italic">{assistantChief.experience}</p>
-                </div>
-              </div>
-
-              {/* Content Side */}
-              <div className="lg:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col justify-center space-y-4 md:space-y-6 bg-gradient-to-bl from-white to-gray-50/50">
-                <div>
-                  <div className="bg-zinc-900 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest w-fit mb-4 shadow-sm">
-                    {assistantChief.role}
-                  </div>
-                  <h2 className="text-3xl md:text-4xl font-black text-black uppercase italic tracking-tight">{assistantChief.name}</h2>
-                  <p className="text-gray-400 font-bold text-[11px] uppercase tracking-widest mt-1">{assistantChief.rank}</p>
-                </div>
-
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed font-medium max-w-xl">
-                  {assistantChief.bio}
-                </p>
-
-                <div className="flex gap-2 md:gap-3 pt-6 border-t border-gray-100 max-w-md">
-                  <Link 
-                    href={`/sensei/${assistantChief.id}`} 
-                    className="flex-1 bg-black text-white py-4 rounded-xl md:rounded-2xl font-black text-[10px] tracking-widest flex items-center justify-center gap-2 hover:bg-dojo-green transition-all shadow-md active:scale-95"
-                  >
-                    READ FULL STORY <FaChevronRight className="text-[8px]" />
-                  </Link>
-                  <a 
-                    href={`https://wa.me/${assistantChief.whatsapp}`}
-                    target="_blank"
-                    className="bg-green-500 text-white px-5 py-4 rounded-xl md:rounded-2xl hover:bg-green-600 transition-all shadow-md flex items-center justify-center active:scale-95"
-                  >
-                    <FaWhatsapp className="text-xl" />
-                  </a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        )}
 
         {/* ================= OTHER INSTRUCTORS GRID ================= */}
         {otherInstructors.length > 0 && (
-          <div className="space-y-8 pt-6">
+          <div className="space-y-8">
             <div className="border-b border-gray-200 pb-4">
               <h3 className="text-xl md:text-2xl font-black text-black uppercase italic tracking-tight">
-                Association <span className="text-green-600">Instructors</span>
+                Senior & Junior <span className="text-red-600">Instructors</span>
               </h3>
             </div>
 
