@@ -71,7 +71,7 @@ export default function ContactForm() {
               <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-all">
                 <FaPhoneAlt className="text-2xl text-dojo-red mb-4" />
                 <h3 className="font-black text-dojo-black uppercase text-sm">Call Us</h3>
-                <p className="text-xs text-gray-500 font-bold mt-1">+94 38 222 4455</p>
+                <p className="text-xs text-gray-500 font-bold mt-1">+94 77 918 8042</p>
               </div>
             </div>
 
@@ -82,7 +82,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Email Address</p>
-                  <p className="font-bold text-dojo-black">info@karatedojo.lk</p>
+                  <p className="font-bold text-dojo-black">seishinwakai@gmail.com</p>
                 </div>
               </div>
 
@@ -117,8 +117,9 @@ export default function ContactForm() {
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase text-gray-400">Select Dojo</label>
                 <select name="dojo_name" className="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl outline-none">
-                  <option>Main Dojo - Panadura</option>
-                  <option>City Branch - Moratuwa</option>
+                  <option>Hombo Dojo - Piliyandala</option>
+                  <option>YMCA Branch - Moratuwa</option>
+                  <option>Dehiwala Branch - Dehiwala</option>
                 </select>
               </div>
           

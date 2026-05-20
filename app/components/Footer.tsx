@@ -43,10 +43,10 @@ export default function Footer() {
                 <a href="https://www.facebook.com/share/1UFY58CwQh/" target="_blank" rel="noopener noreferrer" className="bg-zinc-800 p-3 rounded-full hover:bg-[#1877F2] transition-all hover:-translate-y-1">
                   <FaFacebook className="text-xl" />
                 </a>
-                <a href="#" className="bg-zinc-800 p-3 rounded-full hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] transition-all hover:-translate-y-1">
+                <a href="https://www.instagram.com/japan_karate_seishinwakai?igsh=MWZrY2NxZTVwNWpnYQ==" target="_blank" className="bg-zinc-800 p-3 rounded-full hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] transition-all hover:-translate-y-1">
                   <FaInstagram className="text-xl" />
                 </a>
-                <a href="#" className="bg-zinc-800 p-3 rounded-full hover:bg-[#FF0000] transition-all hover:-translate-y-1">
+                <a href="https://youtube.com/@akikarate?si=hdMw64np4VK_95t1" target="_blank" className="bg-zinc-800 p-3 rounded-full hover:bg-[#FF0000] transition-all hover:-translate-y-1">
                   <FaYoutube className="text-xl" />
                 </a>
               </div>

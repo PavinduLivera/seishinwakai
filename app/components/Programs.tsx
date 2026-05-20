@@ -1,4 +1,5 @@
 import { FaChild, FaUserAlt, FaKhanda, FaChevronRight } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Programs() {
   const classes = [
@@ -93,9 +94,12 @@ export default function Programs() {
               <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic">Need <span className="text-dojo-green">Private</span> Coaching?</h3>
               <p className="text-gray-400 mt-2 font-medium">One-on-one sessions for accelerated learning and grading prep.</p>
             </div>
-            <button className="bg-white text-dojo-black px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-dojo-green hover:text-white transition-all shadow-xl active:scale-95">
+            <Link 
+              href="/sensei"
+              className="bg-white text-dojo-black px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-dojo-green hover:text-white transition-all shadow-xl active:scale-95 inline-block text-center"
+            >
               Book a Session
-            </button>
+            </Link>
           </div>
         </div>
 

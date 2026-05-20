@@ -57,9 +57,12 @@ export default function Navbar() {
              >
                <FaFacebook />
              </a>
-             <button className="bg-dojo-green hover:bg-dojo-black text-white px-6 py-2.5 rounded font-black text-xs flex items-center gap-2 transition-all shadow-lg hover:shadow-red-200">
-               <FaUserPlus /> JOIN NOW
-             </button>
+             <Link 
+                href="/dojos"
+                className="bg-dojo-green hover:bg-dojo-black text-white px-6 py-2.5 rounded font-black text-xs flex items-center gap-2 transition-all shadow-lg hover:shadow-green-200 w-fit"
+              >
+                <FaUserPlus /> JOIN NOW
+              </Link>
           </div>
 
           {/* Mobile Menu Button */}

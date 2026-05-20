@@ -54,3 +54,7 @@ h1, h2, h3, h4 {
   background-color: var(--color-dojo-green);
   color: white;
 }
+
+html {
+  scroll-behavior: smooth;
+}

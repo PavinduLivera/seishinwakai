@@ -253,8 +253,7 @@ export const senseiDetails: Record<string, Sensei> = {
     image: "/coaches/sensei-pavindu.jpg",
     bio: "Expert in modern tournament Kumite tactics and focused on elite athlete development programs.",
     fullStory: [
-      "",
-      "",
+
     ],
     qualifications: [
       "SLKF Certified Coach",
