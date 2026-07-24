@@ -56,7 +56,7 @@ export const senseiDetails: Record<string, Sensei> = {
     "5th Dan Black Belt Holder",
     "Former Chief Instructor of Japan Karate Do Shotokan Ryu Toryukai Association (2012 - 2025)",
     "Former Captain of Sri Lanka Air Force Karate Team",
-    "Coach and Instructor for KDU, CSC Army Unit, Visakha Vidyalaya, Devi Balika Vidyalaya, and St. John's College"
+    "Former Coach and Instructor for KDU, CSC Army Unit, Visakha Vidyalaya, Devi Balika Vidyalaya, and St. John's College"
 
     ],
     additionalCerts: [
